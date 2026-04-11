@@ -21,7 +21,7 @@ MODEL_DIR = os.path.join(BASE, 'model')
 
 print("[STARTUP] Loading model and scalers...")
 
-model = load_model(os.path.join(MODEL_DIR, 'lstm_model.h5'))
+model = load_model(os.path.join(MODEL_DIR, 'lstm_model.h5'), compile=False)
 feature_scaler = pickle.load(open(os.path.join(MODEL_DIR, 'feature_scaler.pkl'), 'rb'))
 target_scaler  = pickle.load(open(os.path.join(MODEL_DIR, 'target_scaler.pkl'), 'rb'))
 last_sequence  = np.load(os.path.join(MODEL_DIR, 'last_sequence.npy'))
