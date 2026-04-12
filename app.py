@@ -10,6 +10,8 @@ import pandas as pd
 import pickle
 import json
 import os
+import warnings
+warnings.filterwarnings('ignore')
 from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
@@ -29,8 +31,11 @@ MODEL_DIR = os.path.join(BASE, 'model')
 print("[STARTUP] Loading model and scalers...")
 
 model          = load_model(os.path.join(MODEL_DIR, 'lstm_model.h5'), compile=False)
-feature_scaler = pickle.load(open(os.path.join(MODEL_DIR, 'feature_scaler.pkl'), 'rb'))
-target_scaler  = pickle.load(open(os.path.join(MODEL_DIR, 'target_scaler.pkl'), 'rb'))
+import sklearn
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore")
+    feature_scaler = pickle.load(open(os.path.join(MODEL_DIR, 'feature_scaler.pkl'), 'rb'))
+    target_scaler  = pickle.load(open(os.path.join(MODEL_DIR, 'target_scaler.pkl'), 'rb'))
 last_sequence  = np.load(os.path.join(MODEL_DIR, 'last_sequence.npy'))
 
 with open(os.path.join(MODEL_DIR, 'columns.json')) as f:
