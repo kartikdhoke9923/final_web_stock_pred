@@ -17,6 +17,17 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 CORS(app, origins="*", allow_headers=["Content-Type"], methods=["GET","POST","OPTIONS"])
 
+
+@app.route('/test', methods=['GET'])
+def test():
+    # Test if predict works without full model
+    try:
+        dummy = np.zeros((1, 20, 23))
+        result = model.predict(dummy, verbose=0)
+        return jsonify({'status': 'ok', 'shape': str(result.shape)})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+    
 @app.after_request
 def add_cors(response):
     response.headers["Access-Control-Allow-Origin"]  = "*"
