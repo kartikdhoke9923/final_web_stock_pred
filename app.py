@@ -13,7 +13,14 @@ import os
 from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins="*", allow_headers=["Content-Type"], methods=["GET","POST","OPTIONS"])
+
+@app.after_request
+def add_cors(response):
+    response.headers["Access-Control-Allow-Origin"]  = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
 
 # ── Load model + scalers on startup ──────────────────────────
 BASE      = os.path.dirname(os.path.abspath(__file__))
