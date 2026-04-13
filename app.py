@@ -162,7 +162,7 @@ def daily_refresh():
             print(f"[REFRESH] Error: {e}")
 
         # Refresh every 6 hours
-        time.sleep(6 * 60 * 60)
+        time.sleep(24 * 60 * 60)
 
 
 # ── Initial load at startup ───────────────────────────────────
