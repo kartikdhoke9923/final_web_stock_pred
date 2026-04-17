@@ -1,9 +1,3 @@
-"""
-app.py — Auto-updating Stock LSTM API
-Fetches latest VW data from Yahoo Finance daily
-Recomputes predictions automatically — no manual retraining needed
-"""
-
 import os, pickle, json, warnings, threading, time
 warnings.filterwarnings('ignore')
 
