@@ -2,7 +2,7 @@
 
 > Predicts Volkswagen stock **Open · High · Low · Close** for the next 1–2 business days using a deep learning LSTM model, served via a live REST API and an interactive frontend.
 
-**Live Demo → [kartikworks.co.in/tools/stock-forecast.html](https://kartikworks.co.in/tools/stock-forecast.html)**  
+**Live Demo → [kartikworks.co.in/tools/stock-forecast.html](https://kartikworks.co.in/tools/stock-forecast.html)**  the link is closed till 22 april after that u will able to view the demo
 
 
 ---
